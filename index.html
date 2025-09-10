@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAZZ Antrenman</title>
+    <meta name="description" content="Arkadaşlarla birlikte antrenman yapın! Set bazlı takip, dinlenme timer'ı ve detaylı egzersiz açıklamaları ile fitness hedeflerinize ulaşın.">
+    <meta name="keywords" content="fitness, antrenman, egzersiz, spor, timer, dinlenme, set takibi">
+    <meta name="author" content="Fitness Tracker Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourusername.github.io/siteantrenman/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/siteantrenman/">
+    <meta property="og:title" content="NAZZ">
+    <meta property="og:description" content="NAZZ için okunabilirliği yüksek 3 günlük antrenman uygulaması.">
+    <meta property="og:image" content="https://yourusername.github.io/siteantrenman/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourusername.github.io/siteantrenman/">
+    <meta property="twitter:title" content="NAZZ">
+    <meta property="twitter:description" content="NAZZ için okunabilirliği yüksek 3 günlük antrenman uygulaması.">
+    <meta property="twitter:image" content="https://yourusername.github.io/siteantrenman/og-image.png">
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="theme-color" content="#0b1220">
+    <!-- iOS PWA meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://yourusername.github.io/siteantrenman/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://yourusername.github.io/siteantrenman/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://yourusername.github.io/siteantrenman/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://yourusername.github.io/siteantrenman/favicon-16x16.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VWFF5M9T9H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VWFF5M9T9H');
+    </script>
+<!-- Typography: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+        :root {
+            --user-color: #60a5fa; /* sea blue accent */
+            --text: #e5e7eb; /* light text on dark */
+            --muted: #374151; /* gray-700 */
+            --border: #222222; /* dark neutral border */
+            --bg: #1a1c1f; /* anthracite bg */
+        }
+
+        * {
+    margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+body {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+            background: linear-gradient(135deg, #161616 0%, #1c1e21 100%);
+            min-height: 100vh;
+    color: var(--text);
+    padding: 20px;
+    line-height: 1.6;
+        }
+
+
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #0e0e0e;
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.6), 0 10px 30px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #161616 0%, #1c1e21 100%);
+            color: #ffffff;
+            padding: 28px 20px;
+    text-align: center;
+            position: relative;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.55);
+        }
+        .sync-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #0c0c0c;
+            color: #ffffff;
+            border: 1px solid var(--border);
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+        /* Add to Home Screen banner */
+        .a2hs-banner {
+            position: fixed;
+            left: 50%;
+            bottom: 16px;
+            transform: translateX(-50%);
+            background: #111827;
+            color: #ffffff;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+            padding: 12px 14px;
+            z-index: 1005;
+            max-width: 92%;
+            display: none;
+        }
+        .a2hs-text { font-size: 0.95rem; margin-bottom: 8px; text-align: center; }
+        .a2hs-actions { display: flex; gap: 10px; justify-content: center; }
+        .a2hs-btn { padding: 10px 14px; border-radius: 10px; border: 1px solid #374151; font-weight: 700; font-size: 0.9rem; }
+        .a2hs-btn-primary { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; }
+        .a2hs-btn-secondary { background: #1f2937; color: #ffffff; }
+        
+
+                .header h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+            color: #fff;
+            letter-spacing: 1.2px;
+            text-shadow: 0 0 14px rgba(250, 204, 21, 0.25);
+        }
+        .header h1::after {
+            content: ' 🦇';
+            color: var(--user-color);
+            filter: drop-shadow(0 0 6px rgba(250,204,21,0.35));
+        }
+        /* Deniz teması ikon ve renkleri */
+        .header h1::after { content: ' 🌊'; color: var(--user-color); filter: drop-shadow(0 0 6px rgba(59,130,246,0.35)); }
+
+        .user-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .user-btn {
+            background: #ffffff;
+            border: 2px solid rgba(31, 41, 55, 0.1);
+            color: #334155;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-btn::before { display: none; }
+
+        .user-btn:hover::before { display: none; }
+
+        .user-btn:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(31, 41, 55, 0.2);
+        }
+
+        .user-btn.active {
+            background: var(--user-color);
+            border-color: var(--user-color);
+            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        
+
+        .header::after { display: none; }
+
+        .controls {
+            padding: 30px 20px;
+            background: #1a1c1f;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .select-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .select-wrapper {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #e5e7eb;
+            font-size: 0.95rem;
+            letter-spacing: .2px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #0e0e0e;
+            color: #e5e7eb;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--user-color);
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.15);
+        }
+
+        .program-section {
+            padding: 30px 20px;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 12px 0 0 0;
+        }
+        .toggle-btn {
+            background: #0e0e0e;
+            color: #cbd5e1;
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .toggle-btn.active { background: var(--user-color); color: #111827; border-color: var(--user-color); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+
+        /* Guide (Rehber) */
+        .guide-section { display: none; padding: 30px 20px; background: #1a1c1f; border: 1px solid var(--border); border-radius: 12px; }
+        .guide-card { background: #1f2125; border: 1px solid var(--border); border-radius: 12px; padding: 16px; cursor: default; color: var(--text); margin-bottom: 12px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02); }
+        .guide-card h3 { color: var(--user-color); margin-bottom: 8px; font-size: 1.1rem; text-shadow: 0 0 8px rgba(59,130,246,0.15); }
+        .guide-card ul, .guide-card p { margin-left: 0; }
+        .guide-card h4 { margin: 8px 0; color: #e8e8e8; font-size: 1rem; }
+        .guide-card ul { margin: 6px 0 10px 18px; }
+
+        /* Rank/PR kaldırıldı */
+
+        /* Guide toolbar */
+        .guide-toolbar { display: flex; gap: 10px; justify-content: center; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+        .guide-search { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: #1a1c1f; color: var(--text); min-width: 260px; box-shadow: inset 0 0 0 1px rgba(59,130,246,0.08); }
+        .lang-btn { background: #0e0e0e; color: #cbd5e1; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .lang-btn.active { background: var(--user-color); color: #111827; border-color: var(--user-color); }
+
+        
+
+        /* Guide article (paragraph-first, mobile friendly) */
+        .guide-article { color: var(--text); line-height: 1.7; }
+        .guide-article h3 { color: var(--user-color); margin: 10px 0 6px 0; font-size: 1.1rem; }
+        .guide-article h4 { color: #e8e8e8; margin: 8px 0 6px 0; font-size: 1rem; }
+        .guide-article p { margin: 6px 0; color: #dcdcdc; }
+        .guide-article ul { margin: 6px 0 10px 18px; }
+        .guide-article li { color: #dcdcdc; }
+
+        
+
+        .program-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .program-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--user-color);
+    margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .program-title::before {
+            content: '🌊';
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 6px rgba(59,130,246,0.35));
+        }
+
+        .progress-section {
+            background: #1a1c1f;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            box-shadow: inset 0 0 0 1px rgba(59,130,246,0.08);
+        }
+
+        .warmup {
+            background: #1f2125;
+            color: var(--user-color);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px;
+            text-align: center;
+            margin: 10px 0 16px 0;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .progress-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .progress-container {
+            background: #1f2125;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 18px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--user-color);
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+        }
+
+        
+
+        .exercise-list {
+            list-style: none;
+            display: grid;
+            gap: 22px;
+        }
+
+        .exercise-item {
+            background: #1f2125;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+    padding: 20px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exercise-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+            border-color: var(--user-color);
+        }
+
+        .exercise-item.completed {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border-color: #28a745;
+            transform: scale(1.02);
+        }
+
+        .exercise-item.completed::before {
+            content: '✅';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .exercise-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .exercise-details {
+            flex: 1;
+        }
+
+        
+
+        
+
+        
+
+        
+
+        .exercise-sets {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .set-checkbox {
+            width: 38px;
+            height: 38px;
+            border: 2px solid #333333;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            background: #1a1c1f;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--user-color);
+            accent-color: var(--user-color);
+        }
+
+        .set-checkbox:hover {
+            transform: scale(1.03);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .set-checkbox:checked {
+            background: #1a1c1f;
+            color: var(--user-color);
+            border-color: var(--user-color);
+        }
+
+        .set-label {
+            font-size: 0.9rem;
+            color: var(--user-color);
+            margin-top: 8px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: .3px;
+        }
+
+        .exercise-details {
+            flex: 1;
+        }
+
+        .exercise-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #e5e7eb;
+            margin-bottom: 4px;
+        }
+
+        .exercise-rest {
+            font-size: 0.92rem;
+            color: #b1b1b1;
+        }
+
+        .completed .exercise-name {
+            text-decoration: line-through;
+            color: #28a745;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary, .btn-secondary {
+            background: var(--user-color);
+            color: #111827;
+            border: 1px solid var(--user-color);
+            box-shadow: 0 0 10px rgba(250,204,21,0.25);
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(250,204,21,0.25);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Mobil uyumluluk */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .select-group {
+                flex-direction: column;
+            }
+
+            .select-wrapper {
+                min-width: auto;
+            }
+
+            .program-title {
+                font-size: 1.5rem;
+            }
+
+            .exercise-item {
+                padding: 15px;
+            }
+
+            .exercise-content {
+                gap: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .controls, .program-section {
+                padding: 20px 15px;
+            }
+
+            .exercise-name {
+                font-size: 1rem;
+            }
+
+            .header-features {
+                gap: 10px;
+            }
+
+            .feature-tag {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .footer {
+                padding: 30px 15px 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Animasyonlar kaldırıldı - senkron sırasında sabit görünüm */
+
+        /* Dinlenme Timer Modal */
+        .timer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .timer-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .timer-content {
+            background: #1f2125;
+            border: 1px solid #2b2e33;
+            border-radius: 20px;
+            padding: 32px 28px;
+            text-align: center;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            position: relative;
+            animation: slideUp 0.35s ease;
+            color: #e5e7eb;
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .timer-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #e5e7eb;
+            margin-bottom: 14px;
+            letter-spacing: .2px;
+        }
+
+        .timer-display {
+            font-size: 3.25rem;
+            font-weight: 900;
+            color: #e5e7eb;
+            margin: 16px 0 18px 0;
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans';
+            letter-spacing: 1px;
+        }
+
+        .timer-progress {
+            width: 100%;
+            height: 10px;
+            background: #2b2e33;
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 16px 0 20px 0;
+        }
+
+        .timer-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(96,165,250,1) 0%, rgba(147,197,253,1) 100%);
+            width: 100%;
+            transition: width 1s linear;
+            border-radius: 999px;
+        }
+
+        .timer-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+            touch-action: manipulation;
+        }
+
+        .timer-btn {
+            padding: 12px 22px;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.2px;
+            font-family: inherit;
+        }
+
+        .timer-btn-primary {
+            background: var(--user-color);
+            color: #0b1220;
+            box-shadow: 0 10px 25px rgba(96,165,250,0.25);
+        }
+
+        .timer-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(96,165,250,0.35);
+        }
+
+        .timer-btn-secondary {
+            background: #374151;
+            color: #e5e7eb;
+            border-color: #475569;
+        }
+
+        .timer-btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(71,85,105,0.35);
+        }
+
+        
+
+        .timer-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #2b2e33;
+            border: 1px solid #3b3f45;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-close:hover {
+            background: #34383e;
+            border-color: #4b5563;
+        }
+
+        .notification-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+            z-index: 1001;
+            display: none;
+            animation: slideInRight 0.5s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification-badge.show {
+            display: block;
+        }
+
+        /* Hafta Sıfırlama Modal */
+        .week-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none; justify-content: center; align-items: center;
+            z-index: 1002;
+            backdrop-filter: blur(4px);
+        }
+        .week-modal.active { display: flex; }
+        .week-content {
+            background: #ffffff; border-radius: 16px; padding: 24px; width: 90%; max-width: 420px;
+            text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+        .week-title { font-size: 1.3rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .week-sub { font-size: 0.95rem; color: #475569; margin-bottom: 20px; }
+        .week-actions { display: flex; gap: 10px; justify-content: center; }
+        .week-btn { padding: 10px 16px; border: 0; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        .week-btn-primary { background: var(--user-color); color: #fff; }
+        .week-btn-secondary { background: #e5e7eb; color: #111827; }
+
+        /* Egzersiz Detay Modal */
+        .exercise-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .exercise-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .exercise-content-modal {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        .exercise-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            transition: color 0.3s ease;
+        }
+
+        .exercise-modal-close:hover {
+            color: #ff6b6b;
+        }
+
+        .exercise-modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0b1220;
+            margin-bottom: 20px;
+            padding-right: 40px;
+        }
+
+        .exercise-modal-subtitle {
+            font-size: 1.05rem;
+            color: #1f2937;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .exercise-modal-description {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .exercise-modal-steps {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .exercise-modal-steps h4 {
+            color: #0f172a;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .exercise-modal-steps ol {
+            padding-left: 20px;
+            color: #0f172a;
+        }
+
+        .exercise-modal-steps li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .exercise-modal-tips {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 18px 0;
+            border-left: 4px solid #111827;
+        }
+
+        .exercise-modal-tips h4 {
+            color: #0f172a;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .exercise-modal-tips ul {
+            padding-left: 20px;
+            color: #111827;
+        }
+
+        .exercise-modal-tips li {
+            margin-bottom: 5px;
+        }
+
+        .exercise-modal-muscles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 18px 0;
+        }
+
+        .muscle-tag {
+            background: #0b0b0b; /* neutral dark */
+            color: #ffffff; /* white */
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        .muscle-translations { margin-top: 10px; padding-left: 0; list-style: none; text-align: left; }
+        .muscle-translations li { color: #374151; font-size: 0.92rem; margin: 2px 0; }
+        .muscle-more { background: #222222; color: #fff; padding: 6px 10px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; }
+
+        /* Footer styles removed */
+
+        /* Mobil uyumluluk için timer modal */
+        @media (max-width: 768px) {
+            .timer-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .timer-display {
+                font-size: 3rem;
+            }
+
+            .timer-buttons {
+                flex-direction: column;
+            }
+
+            .timer-btn {
+                width: 100%;
+            }
+
+            .exercise-content-modal {
+                padding: 20px;
+                margin: 15px;
+            }
+
+            .exercise-modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .toggle-btn:focus-visible, .user-btn:focus-visible, .set-checkbox:focus-visible, .btn:focus-visible, .guide-search:focus-visible {
+            outline: 2px solid var(--user-color);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 6px rgba(250,204,21,0.15);
+        }
+
+        /* Media clips in guide */
+        /* (removed) media-grid styles */
+</style>
+</head>
+<body>
+<div class="container">
+        <div class="header">
+            <h1 id="userHeader">NAZZ</h1>
+            <!-- user-selector removed for single-user setup -->
+            <div class="sync-badge" id="syncBadge">Çevrimdışı</div>
+            
+        </div>
+
+        <div class="controls">
+            <div class="select-group">
+                
+                <div class="select-wrapper">
+                    <label for="daySelect">Antrenman Günü</label>
+<select id="daySelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="view-toggle" style="margin-top:10px;">
+            <button id="btnProgram" class="toggle-btn active">Program</button>
+            <button id="btnGuide" class="toggle-btn">Rehber</button>
+        </div>
+
+        <div class="program-section">
+            <div class="program-header">
+                <h2 class="program-title" id="programTitle">NAZZ</h2>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-text" id="progressText">İlerleme: 0/7 egzersiz tamamlandı</div>
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+            </div>
+
+            <ul class="exercise-list" id="programList"></ul>
+        </div>
+        <div class="guide-section" id="guideSection">
+            <div class="guide-toolbar">
+                <input id="guideSearch" class="guide-search" placeholder="Rehberde ara (örn. bench, uyku, protein)" aria-label="Rehberde ara">
+             </div>
+            <div class="guide-article" id="guideArticle">
+                <section data-kb="purpose">
+                    <h3 id="gaPurposeTitle">🎯 Programın Amacı</h3>
+                    <p id="gaPurposeIntro">Bu program aynı anda temel kuvvet, kas kütlesi ve posterior chain/core gelişimini hedefler. Omuz sağlığı ve sakatlık önleme prensipleriyle balanslıdır.</p>
+                    <ul>
+                        <li>Temel kuvvet (Squat, Bench, Deadlift, OHP)</li>
+                        <li>Yeterli hacim ile hipertrofi</li>
+                        <li>Core ve omuz stabilitesi</li>
+                        <li>Haftada 3 gün, minimum 12 hafta</li>
+                    </ul>
+                </section>
+                <section data-kb="weekly">
+                    <h3 id="gaWeeklyTitle">📅 Haftalık Program</h3>
+                    <p id="gaWeeklyMon"><strong>Pazartesi — Kuvvet:</strong> Back Squat 4×6–8, Bench 4×6–8, Row 4×8–10, DB OHP 3×10, Face Pull 3×12–15, Plank 3×max, Wrist Curl 3×15–20.</p>
+                    <p id="gaWeeklyWed"><strong>Çarşamba — Posterior Chain + Core:</strong> Deadlift 4×5, Lat Pulldown 4×10, Incline DB 4×10, Leg Curl 3×12, Hip Thrust 3×12, Side Plank 3×, Reverse Wrist Curl 3×15–20.</p>
+                    <p id="gaWeeklyFri"><strong>Cuma — Volüm & Detay:</strong> Front/Goblet Squat 4×10, OHP 4×8–10, RDL 4×10, Seated Row 4×10–12, Lateral Raise 3×12–15, HKR 3×12–15, Wrist Roller 3 tur.</p>
+                </section>
+                
+                <section data-kb="accessory">
+                    <h3 id="gaAccessoryTitle">🧩 Aksesuar Eşikleri</h3>
+                    <div>
+                        <div class="rank-card">
+                            <div class="rank-title">Incline DB (her elde)</div>
+                            <div class="rank-chip"><span>Rookie (Acemi)</span><span>2×15</span></div>
+                            <div class="rank-chip"><span>Apprentice (Çırak)</span><span>2×20</span></div>
+                            <div class="rank-chip"><span>Warrior (Savaşçı)</span><span>2×30</span></div>
+                            <div class="rank-chip"><span>Protector (Koruyucu)</span><span>2×35</span></div>
+                            <div class="rank-chip"><span>Knight (Şövalye)</span><span>2×40</span></div>
+                            <div class="rank-chip"><span>Dark Knight (Kara Şövalye)</span><span>2×50</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Front/Goblet Squat</div>
+                            <div class="rank-chip"><span>Rookie</span><span>40</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>60</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>80</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>100</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>120</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>140</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Romanian Deadlift (RDL)</div>
+                            <div class="rank-chip"><span>Rookie</span><span>60</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>80</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>100</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>140</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>160</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>180</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Leg Curl (machine)</div>
+                            <div class="rank-chip"><span>Rookie</span><span>30</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>40</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>50</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>60</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>70</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>80</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Barbell Hip Thrust</div>
+                            <div class="rank-chip"><span>Rookie</span><span>60</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>80</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>120</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>160</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>180</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>200</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">DB Overhead Press (her elde)</div>
+                            <div class="rank-chip"><span>Rookie</span><span>2×12</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>2×16</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>2×22</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>2×26</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>2×30</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>2×36</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Dumbbell Lateral Raise</div>
+                            <div class="rank-chip"><span>Rookie</span><span>6–8</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>8–10</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>12–14</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>16–18</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>20–22</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>24–26</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Face Pull (kablo)</div>
+                            <div class="rank-chip"><span>Rookie</span><span>20</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>30</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>40</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>50</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>60</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>70</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Seated Cable Row</div>
+                            <div class="rank-chip"><span>Rookie</span><span>40</span></div>
+                            <div class="rank-chip"><span>Apprentice</span><span>60</span></div>
+                            <div class="rank-chip"><span>Warrior</span><span>80</span></div>
+                            <div class="rank-chip"><span>Protector</span><span>100</span></div>
+                            <div class="rank-chip"><span>Knight</span><span>120</span></div>
+                            <div class="rank-chip"><span>Dark Knight</span><span>140</span></div>
+                        </div>
+                        <div class="rank-card">
+                            <div class="rank-title">Core & Grip</div>
+                            <div class="rank-chip"><span>Plank</span><span>30 → 180 sn</span></div>
+                            <div class="rank-chip"><span>HKR</span><span>BW → BW+20</span></div>
+                            <div class="rank-chip"><span>Wrist Curl</span><span>10 → 40+</span></div>
+                            <div class="rank-chip"><span>Wrist Roller</span><span>5 → 20</span></div>
+                        </div>
+                    </div>
+                </section>
+                <section data-kb="howto">
+                    <h3 id="gaHowToTitle">🔧 Uygulama — Adım Adım</h3>
+                    <ul>
+                        <li>Isınma: 5–10 dk kardiyo + dinamik mobilite; ana hareket için 2–3 hazırlık seti</li>
+                        <li>Set/Tekrar: Aralıkta kal; kolaysa ağırlığı %2.5–5 artır</li>
+                        <li>Dinlenme: Compound 2–4 dk; izolasyon 60–90 sn</li>
+                        <li>Form: Bozulursa ağırlığı azalt; spotter/güvenlik ekipmanı kullan</li>
+                    </ul>
+                </section>
+                <section data-kb="periodization">
+                    <h3 id="gaPeriodTitle">📈 12 Haftalık Periyodizasyon</h3>
+                    <ul>
+                        <li>1–4: Adaptasyon (teknik + hacim)</li>
+                        <li>5–8: İlerleme (ağırlık/tekrar artışı)</li>
+                        <li>9–11: Yoğunlaşma (4–6 tekrar)</li>
+                        <li>12: Deload (hacmi %40–60 düşür)</li>
+                    </ul>
+                </section>
+                <section data-kb="faq">
+                    <h3 id="gaFAQTitle">❓ SSS & Güvenlik</h3>
+                    <ul>
+                        <li>En az 12 hafta; haftada 1–3 kardiyo</li>
+                        <li>Uyku 7–9 saat; protein 1.6–2.2 g/kg</li>
+                        <li>Ağrı varsa dur ve profesyonele danış</li>
+                    </ul>
+                </section>
+</div>
+</div>
+
+<!-- Dinlenme Timer Modal -->
+<div class="timer-modal" id="timerModal">
+    <div class="timer-content">
+        <button class="timer-close" onclick="closeTimer()">×</button>
+        <h2 class="timer-title">⏰ Dinlenme Süresi</h2>
+        <div class="timer-display" id="timerDisplay">00:00</div>
+        <div class="timer-progress">
+            <div class="timer-progress-bar" id="timerProgressBar"></div>
+        </div>
+                <div class="timer-buttons">
+                    <button class="timer-btn timer-btn-secondary" onclick="closeTimer()">İptal</button>
+                </div>
+    </div>
+</div>
+
+<!-- Add to Home Screen Banner -->
+<div class="a2hs-banner" id="a2hsBanner">
+    <div class="a2hs-text" id="a2hsText">Uygulamayı ana ekrana ekleyin: Daha hızlı erişim ve tam ekran deneyim!</div>
+    <div class="a2hs-actions">
+        <button class="a2hs-btn a2hs-btn-secondary" onclick="dismissA2HS()">Kapat</button>
+        <button class="a2hs-btn a2hs-btn-primary" id="a2hsInstallBtn" style="display:none">Yükle</button>
+    </div>
+</div>
+
+<!-- Bildirim Badge -->
+<div class="notification-badge" id="notificationBadge">
+    <div>⏰ Dinlenme süresi bitti!</div>
+</div>
+
+<!-- Hafta Sıfırlama Modal -->
+<div class="week-modal" id="weekModal">
+    <div class="week-content">
+        <div class="week-title">Hafta sıfırlansın mı?</div>
+        <div class="week-sub">Pzt-Çrş-Cuma toplam 72 set tamamlandı. Seçili kullanıcı için haftayı sıfırlamak ister misin?</div>
+        <div class="week-actions">
+            <button class="week-btn week-btn-secondary" onclick="closeWeekModal()">İptal</button>
+            <button class="week-btn week-btn-primary" onclick="confirmWeekReset()">Sıfırla</button>
+        </div>
+    </div>
+    </div>
+
+<!-- Egzersiz Detay Modal -->
+<div class="exercise-modal" id="exerciseModal">
+    <div class="exercise-content-modal">
+        <button class="exercise-modal-close" onclick="closeExerciseModal()">×</button>
+        <h2 class="exercise-modal-title" id="exerciseModalTitle">Egzersiz Adı</h2>
+        <div class="exercise-modal-subtitle" id="exerciseModalSubtitle">Egzersiz Türü</div>
+        
+        <div class="exercise-modal-muscles" id="exerciseModalMuscles">
+            <!-- Kas grupları buraya gelecek -->
+        </div>
+        
+        <div class="exercise-modal-description" id="exerciseModalDescription">
+            <!-- Egzersiz açıklaması buraya gelecek -->
+        </div>
+        
+        <div class="exercise-modal-steps">
+            <h4>📋 Nasıl Yapılır:</h4>
+            <ol id="exerciseModalSteps">
+                <!-- Adımlar buraya gelecek -->
+            </ol>
+        </div>
+        
+        <div class="exercise-modal-tips">
+            <h4>💡 Önemli İpuçları:</h4>
+            <ul id="exerciseModalTips">
+                <!-- İpuçları buraya gelecek -->
+            </ul>
+        </div>
+</div>
+</div>
+
+<!-- Alt Bekleme ile Açılan Sıfırlama Butonu -->
+<div id="bottomResetBtn" style="display:none; position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 1005;">
+    <button class="btn btn-secondary" onclick="hideBottomReset();openWeekModal()">Haftayı Sıfırla</button>
+</div>
+
+<!-- Firebase Cloud Sync (Firestore) -->
+<script type="module">
+// Cloud Sync: Proje yapılandırması (doğrudan entegre edildi)
+const firebaseConfig = {
+  apiKey: "AIzaSyDMMTU5MF4TNPwoS6sRAuv2UrIOBylBCOM",
+  authDomain: "takip-32df7.firebaseapp.com",
+  projectId: "takip-32df7",
+  storageBucket: "takip-32df7.firebasestorage.app",
+  messagingSenderId: "263707042265",
+  appId: "1:263707042265:web:d6d7de9eaaeb60c92579c8",
+  measurementId: "G-VWFF5M9T9H"
+};
+
+let enabled = false;
+try {
+  const valid = firebaseConfig && firebaseConfig.apiKey;
+  if (valid) {
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
+    const { getFirestore, enableIndexedDbPersistence, doc, setDoc, updateDoc, onSnapshot, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
+    const { getAuth, signInAnonymously, onAuthStateChanged } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    try { await enableIndexedDbPersistence(db); } catch (e) {}
+    await signInAnonymously(auth).catch(()=>{});
+
+    async function ensureDoc(userId) {
+      const ref = doc(db, 'profiles', userId);
+      await setDoc(ref, { createdAt: serverTimestamp() }, { merge: true });
+      return ref;
+    }
+
+    async function setPreset(userId, value) {
+      const ref = await ensureDoc(userId);
+      await updateDoc(ref, { preset: value, updatedAt: serverTimestamp() });
+    }
+
+    async function setSet(userId, key, value) {
+      const ref = await ensureDoc(userId);
+      await updateDoc(ref, { ["sets."+key]: value, updatedAt: serverTimestamp() });
+    }
+
+    // setPR kaldırıldı
+
+    function subscribeCurrentUser(userId, callback) {
+      ensureDoc(userId);
+      const ref = doc(db, 'profiles', userId);
+      return onSnapshot(ref, (snap) => callback(snap.data() || {}));
+    }
+
+    window.cloudSync = { enabled: true, setPreset, setSet, subscribeCurrentUser };
+    enabled = true;
+    // Notify main script that cloud is ready
+    window.dispatchEvent(new Event('cloudready'));
+  }
+} catch (e) {
+  window.cloudSync = { enabled: false };
+}
+</script>
+
+<script>
+        // openCloudModal kaldırıldı (buton kaldırıldı)
+const programs = {
+            // 1. Gün – Pazartesi – Kalça & Bacak
+            1: [
+                { name: "Squat (barbell/smith) – 4x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Hip Thrust (barbell/dumbbell) – 4x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Walking Lunge (dambıl) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Romanian Deadlift (DB/BB) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Leg Press – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Glute Kickback (kablo/lastik) – 3x15", rest: "Dinlenme: 45-60 sn" }
+            ],
+            // 2. Gün – Çarşamba – Üst Vücut + Core (Hafif)
+            2: [
+                { name: "Lat Pulldown (geniş tutuş) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Shoulder Press (hafif) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Dumbbell Row – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Biceps Curl (hafif) – 2x15", rest: "Dinlenme: 45-60 sn" },
+                { name: "Triceps Pushdown (hafif) – 2x12", rest: "Dinlenme: 45-60 sn" },
+                { name: "Plank – 3x30-40 sn", rest: "Dinlenme: 45-60 sn" },
+                { name: "Russian Twist (hafif DB) – 3x15", rest: "Dinlenme: 45-60 sn" }
+            ],
+            // 3. Gün – Cuma – Kalça & Bacak (Daha Yoğun)
+            3: [
+                { name: "Bulgarian Split Squat (DB) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Hip Thrust (ağır) – 4x10", rest: "Dinlenme: 60-90 sn" },
+                { name: "Sumo Deadlift (DB/BB) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Side Lunge – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Leg Curl (makine) – 3x12", rest: "Dinlenme: 60-90 sn" },
+                { name: "Fire Hydrant (lastik) – 3x15", rest: "Dinlenme: 45-60 sn" }
+            ]
+        };
+
+        const activeDays = [1, 2, 3];
+        const dayNames = [
+            "", // 0 kullanılmıyor
+            "Pazartesi",
+            "Çarşamba",
+            "Cuma"
+        ];
+        
+        // Kullanıcı sistemi (single user)
+        let currentUser = 'default';
+        const users = {
+            default: { name: 'NAZZ', color: '#60a5fa', theme: 'sea' }
+        };
+        
+        const daySelect = document.getElementById("daySelect");
+        const programTitle = document.getElementById("programTitle");
+        const programList = document.getElementById("programList");
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
+
+        // Kullanıcı değiştirme sistemi kaldırıldı (tek kullanıcı)
+        function setupUserSelector() {}
+
+        // Mevcut kullanıcının verilerini kaydet
+        function saveCurrentUserData() {}
+
+        // Kullanıcı verilerini yükle
+        function loadUserData() {}
+
+        // PR kaldırıldı
+        let useCloud = false;
+        const cloudUnsubs = {};
+        const profileCache = { default: null };
+        const loadedUsers = new Set();
+
+        // updatePR kaldırıldı
+
+        // Spotify iptal edildi - fonksiyon kaldırıldı
+
+        // Kullanıcı temasını güncelle
+        function updateUserTheme() {
+            const user = users[currentUser];
+            document.documentElement.style.setProperty('--user-color', user.color);
+            document.documentElement.setAttribute('data-theme', 'sea');
+            
+            // Progress bar rengini güncelle
+            // Renkleri CSS değişkenleriyle güncelle
+            document.documentElement.style.setProperty('--footer-li-color', user.color);
+            document.documentElement.style.setProperty('--footer-h3-color', user.color);
+            document.documentElement.style.setProperty('--footer-h4-color', `${user.color}88`);
+
+            // Başlık metni (tema başlığı)
+            const header = document.getElementById('userHeader');
+            if (header) {
+                header.textContent = 'NAZZ';
+            }
+            const badge = document.getElementById('syncBadge');
+            if (badge) badge.style.borderColor = '#1f2937';
+
+            // Kullanıcı buton etiketlerine emoji
+            const userBtns = document.querySelectorAll('.user-btn');
+            // Kullanıcı butonları kaldırıldı
+
+            // Set/Exercise renkleri (değişmedi)
+            document.documentElement.style.setProperty('--set-checkbox-color', user.color);
+            document.documentElement.style.setProperty('--exercise-item-border-color', user.color);
+            // PR inputları kaldırıldı
+        }
+
+        function applyProfileToUI(profile) {
+            if (!profile) return;
+            if (profile.preset && presetSelect.value !== profile.preset) {
+                presetSelect.value = profile.preset;
+            }
+            const dayIndex = parseInt(daySelect.value);
+            const programKey = getProgramForDay(dayIndex);
+            const todayData = programs[programKey];
+            // Apply sets
+            if (profile.sets) {
+                todayData.forEach((item, index) => {
+                    const setCount = parseSetCount(item.name);
+                    for (let i = 1; i <= setCount; i++) {
+                        const key = `${dayIndex}_${programKey}_${index}_set${i}`;
+                        const checked = profile.sets[key] === true;
+                        const el = document.getElementById(`set${index}_${i}`);
+                        if (el) el.checked = checked;
+                    }
+                });
+            }
+            // PR uygulanmıyor (kaldırıldı)
+            updateProgress(dayIndex, programKey);
+            // Rank hesaplama kaldırıldı
+        }
+
+        function startCloudSyncAll() {
+            useCloud = !!(window.cloudSync && window.cloudSync.enabled);
+            const badge = document.getElementById('syncBadge');
+            if (!useCloud) { if (badge) badge.textContent = 'Çevrimdışı'; return; }
+            if (badge) badge.textContent = 'Senkronize ediliyor';
+
+            ['default'].forEach(userId => {
+                if (cloudUnsubs[userId]) return; // already subscribed
+                cloudUnsubs[userId] = window.cloudSync.subscribeCurrentUser(userId, (profile) => {
+                    profileCache[userId] = profile || {};
+                    loadedUsers.add(userId);
+                    if (userId === currentUser) {
+                        // DOM zaten mevcut; sadece değerleri uygula (yeniden render yok)
+                        applyProfileToUI(profileCache[userId]);
+                    }
+                    if (loadedUsers.size === 1 && badge) badge.textContent = 'Senkronize';
+                });
+            });
+        }
+
+        // Cloud hazır olur olmaz otomatik başlat (sayfa açılışında)
+        window.addEventListener('cloudready', () => {
+            startCloudSyncAll();
+        });
+
+        // A2HS (Add to Home Screen) banner - sadece ilk girişte
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            localStorage.getItem('a2hs_dismissed') || showA2HS(true);
+        });
+        function showA2HS(canInstall) {
+            const banner = document.getElementById('a2hsBanner');
+            const btn = document.getElementById('a2hsInstallBtn');
+            if (!banner) return;
+            banner.style.display = 'block';
+            if (btn) btn.style.display = canInstall ? 'inline-block' : 'none';
+        }
+        function dismissA2HS() {
+            const banner = document.getElementById('a2hsBanner');
+            if (banner) banner.style.display = 'none';
+            localStorage.setItem('a2hs_dismissed', '1');
+        }
+        const a2hsInstallBtn = document.getElementById('a2hsInstallBtn');
+        if (a2hsInstallBtn) {
+            a2hsInstallBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                deferredPrompt.prompt();
+                await deferredPrompt.userChoice;
+                dismissA2HS();
+                deferredPrompt = null;
+            });
+        }
+
+        // iOS için yönlendirme (beforeinstallprompt yok): yalnız ilk girişte göster
+        const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        if (isIOS && !isStandalone && !localStorage.getItem('a2hs_dismissed')) {
+            const text = document.getElementById('a2hsText');
+            if (text) text.textContent = 'iOS: Paylaş > Ana Ekrana Ekle ile uygulamayı yükleyin.';
+            showA2HS(false);
+        }
+
+// Gün seçim dropdown
+        activeDays.forEach(day => {
+            const opt = document.createElement("option");
+            opt.value = day;
+            opt.text = dayNames[day];
+    daySelect.appendChild(opt);
+});
+
+// Preset kaldırıldı
+
+// ABA-BAB mantığı
+        function getProgramForDay(dayIndex) {
+            return dayIndex;
+}
+
+// Program gösterme
+        function showProgram(dayIndex) {
+            const programKey = getProgramForDay(dayIndex);
+            const brand = 'NAZZ';
+            programTitle.innerText = `${brand} – ${dayNames[dayIndex]}`;
+            programList.innerHTML = "";
+            
+            const todayData = programs[programKey];
+            const warm = document.createElement('li');
+            warm.className = 'warmup';
+            warm.textContent = 'Isınma: 5 dk yürüyüş + mobilite';
+            programList.appendChild(warm);
+            todayData.forEach((item, index) => {
+                const setCount = parseSetCount(item.name);
+                const li = document.createElement("li");
+                li.className = "exercise-item";
+                li.dataset.order = String(index);
+                
+                // Set checkbox'larını oluştur
+                let setCheckboxes = '';
+                for (let i = 1; i <= setCount; i++) {
+                    setCheckboxes += `
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <input type="checkbox" class="set-checkbox" id="set${index}_${i}" data-set="${i}">
+                            <div class="set-label">${i}</div>
+                        </div>
+                    `;
+                }
+                // PR ve unit hesapları kaldırıldı
+                li.innerHTML = `
+                    <div class="exercise-content">
+                        <div class="exercise-details">
+                            <div class="exercise-name">${item.name}</div>
+                            <div class="exercise-rest">${item.rest}</div>
+                            
+                            <div class="exercise-sets">
+                                ${setCheckboxes}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+        programList.appendChild(li);
+                
+                // Set checkbox'larını kontrol et ve event listener'ları ekle
+                for (let i = 1; i <= setCount; i++) {
+                    const setChk = document.getElementById(`set${index}_${i}`);
+                    const saved = localStorage.getItem(`${currentUser}_${dayIndex}_${programKey}_${index}_set${i}`);
+                
+                if (saved === "true") {
+                        setChk.checked = true;
+                    }
+                    
+                    // Set checkbox event listener
+                    setChk.addEventListener("change", () => {
+                        if (setChk.checked) {
+                            localStorage.setItem(`${currentUser}_${dayIndex}_${programKey}_${index}_set${i}`, "true");
+                            if (useCloud && window.cloudSync && window.cloudSync.enabled) {
+                                const key = `${dayIndex}_${programKey}_${index}_set${i}`;
+                                window.cloudSync.setSet(currentUser, key, true);
+                            }
+                            // Dinlenme süresi varsa timer başlat
+                            const shortRest = parseRestTime(item.rest);
+                            let secondsToUse = shortRest;
+                            // Son set tamamlandı mı?
+                            let allDone = true;
+                            for (let s = 1; s <= setCount; s++) {
+                                const chkEl = document.getElementById(`set${index}_${s}`);
+                                if (!chkEl || !chkEl.checked) { allDone = false; break; }
+                            }
+                            if (allDone) {
+                                secondsToUse = getLongRestSeconds(shortRest);
+                            }
+                            if (secondsToUse > 0) {
+                                showTimerModal(secondsToUse);
+                            }
+                    } else {
+                            localStorage.setItem(`${currentUser}_${dayIndex}_${programKey}_${index}_set${i}`, "false");
+                            if (useCloud && window.cloudSync && window.cloudSync.enabled) {
+                                const key = `${dayIndex}_${programKey}_${index}_set${i}`;
+                                window.cloudSync.setSet(currentUser, key, false);
+                            }
+                    }
+                    updateProgress(dayIndex, programKey);
+                    updateExerciseProgress(li);
+                    resortProgramList();
+        });
+                }
+                
+                // Long press event listener'ı ekle
+                updateLongPressEvent(li, item);
+    });
+            
+            updateProgress(dayIndex, programKey);
+            resortProgramList();
+}
+
+// İlerleme bar
+        function updateProgress(dayIndex, programKey) {
+            const todayData = programs[programKey];
+            let totalSets = 0;
+            let completedSets = 0;
+            
+            todayData.forEach((item, index) => {
+                const setCount = parseSetCount(item.name);
+                totalSets += setCount;
+                
+                for (let i = 1; i <= setCount; i++) {
+                    const setChk = document.getElementById(`set${index}_${i}`);
+                    if (setChk && setChk.checked) completedSets++;
+                }
+            });
+            
+            const percent = Math.round((completedSets / totalSets) * 100);
+            progressBar.style.width = percent + "%";
+            progressText.innerText = `İlerleme: ${completedSets}/${totalSets} set tamamlandı`;
+            // Haftalık tamamlama kontrolü
+            checkWeeklyCompletion();
+        }
+
+        function countDaySets(userId, targetDay) {
+            const programKey = getProgramForDay(targetDay);
+            const list = programs[programKey];
+            let total = 0;
+            list.forEach((item, idx) => {
+                const setCount = parseSetCount(item.name);
+                for (let i = 1; i <= setCount; i++) {
+                    const saved = localStorage.getItem(`${userId}_${targetDay}_${programKey}_${idx}_set${i}`);
+                    if (saved === "true") total++;
+                }
+            });
+            return total;
+        }
+
+        function checkWeeklyCompletion() {
+            const days = [1, 3, 5]; // Pazartesi, Çarşamba, Cuma
+            const expectedPerDay = 24;
+            const modal = document.getElementById('weekModal');
+            const allMet = days.every(d => countDaySets(currentUser, d) >= expectedPerDay);
+            if (allMet && modal && !modal.classList.contains('active')) {
+                openWeekModal();
+            }
+        }
+
+        function openWeekModal() {
+            const m = document.getElementById('weekModal');
+            if (m) m.classList.add('active');
+        }
+        function closeWeekModal() {
+            const m = document.getElementById('weekModal');
+            if (m) m.classList.remove('active');
+        }
+        function confirmWeekReset() {
+            const days = [1, 3, 5];
+            // Local reset (only for currentUser)
+            days.forEach(d => {
+                const programKey = getProgramForDay(d);
+                programs[programKey].forEach((item, index) => {
+                    const setCount = parseSetCount(item.name);
+                    for (let i = 1; i <= setCount; i++) {
+                        localStorage.setItem(`${currentUser}_${d}_${programKey}_${index}_set${i}`, "false");
+                    }
+                });
+            });
+
+            // Cloud reset if enabled
+            if (useCloud && window.cloudSync && window.cloudSync.enabled) {
+                days.forEach(d => {
+                    const programKey = getProgramForDay(d);
+                    programs[programKey].forEach((item, index) => {
+                        const setCount = parseSetCount(item.name);
+                        for (let i = 1; i <= setCount; i++) {
+                            const key = `${d}_${programKey}_${index}_set${i}`;
+                            window.cloudSync.setSet(currentUser, key, false);
+                        }
+                    });
+                });
+            }
+
+            closeWeekModal();
+            showProgram(parseInt(daySelect.value));
+        }
+
+        // Ekranı açık tut: Screen Wake Lock API
+        // Kullanıcı isteğiyle wake lock ve çıkış uyarısı kaldırıldı
+
+// Sıfırlama
+        // Gün sıfırlama kaldırıldı (haftalık sıfırlama mevcut)
+
+        // Timer değişkenleri
+        let timerInterval;
+        let timerSeconds = 0;
+        let timerTotalSeconds = 0;
+        let isTimerRunning = false;
+        let isTimerPaused = false;
+
+        // Dinlenme süresini saniyeye çevir
+        function parseRestTime(restText) {
+            const match = restText.match(/(\d+)/);
+            return match ? parseInt(match[1]) : 60;
+        }
+
+        // Set sayısını parse et
+        function parseSetCount(exerciseName) {
+            const match = exerciseName.match(/(\d+)x/);
+            return match ? parseInt(match[1]) : 3;
+        }
+
+        // Yardımcılar: PR anahtarı ve uzun dinlenme süresi
+        function slugify(text) {
+            return String(text)
+                .toLowerCase()
+                .replace(/[^\w]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        // getPRKey kaldırıldı
+
+        // prLevels kaldırıldı
+
+        // rankTrMap kaldırıldı
+
+        // prKeyMap kaldırıldı
+
+        function getNumericPRValue(text) {
+            const v = Number(text);
+            return isNaN(v) ? 0 : v;
+        }
+
+        // getGroupForExercise kaldırıldı
+
+        // getLevelFor kaldırıldı
+
+        // determineLevel kaldırıldı
+
+        // renderPerExerciseRanks kaldırıldı
+
+        function getLongRestSeconds(shortRestSeconds) {
+            // Set arası kısa dinlenme; egzersiz arası daha uzun
+            return shortRestSeconds >= 90 ? 180 : 120;
+        }
+
+        // Timer modal'ını göster
+        function showTimerModal(restSeconds) {
+            timerTotalSeconds = restSeconds;
+            timerSeconds = restSeconds;
+            isTimerRunning = false;
+            isTimerPaused = false;
+            
+            updateTimerDisplay();
+            updateTimerProgress();
+            
+            document.getElementById('timerModal').classList.add('active');
+            
+            // Timer'ı otomatik başlat
+            startTimer();
+        }
+
+        // Timer'ı başlat
+        function startTimer() {
+            if (isTimerRunning) return;
+            
+            isTimerRunning = true;
+            isTimerPaused = false;
+            
+            timerInterval = setInterval(() => {
+                if (timerSeconds > 0) {
+                    timerSeconds--;
+                    updateTimerDisplay();
+                    updateTimerProgress();
+                } else {
+                    clearInterval(timerInterval);
+                    timerFinished();
+                }
+            }, 1000);
+        }
+
+        // Timer'ı kapat
+        function closeTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            isTimerPaused = false;
+            document.getElementById('timerModal').classList.remove('active');
+        }
+
+        // Timer bittiğinde
+        function timerFinished() {
+            // Vibrasyon bildirimi (mobil)
+            vibrateDevice();
+            
+            // Bildirim göster
+            showNotification();
+            
+            // Modal'ı kapat
+            setTimeout(() => {
+                closeTimer();
+            }, 2000);
+        }
+
+        // Vibrasyon bildirimi
+        function vibrateDevice() {
+            if ('vibrate' in navigator) {
+                // Kısa-kısa-kısa pattern
+                navigator.vibrate([200, 100, 200, 100, 200]);
+            }
+        }
+
+        // Timer display'ini güncelle
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Timer progress bar'ını güncelle
+        function updateTimerProgress() {
+            const progress = (timerSeconds / timerTotalSeconds) * 100;
+            document.getElementById('timerProgressBar').style.width = `${progress}%`;
+        }
+
+
+
+        // Bildirim göster
+        function showNotification() {
+            const badge = document.getElementById('notificationBadge');
+            badge.classList.add('show');
+            
+            setTimeout(() => {
+                badge.classList.remove('show');
+            }, 5000);
+        }
+
+        // Egzersiz detay modal'ını göster
+        function showExerciseModal(exerciseData) {
+            document.getElementById('exerciseModalTitle').textContent = exerciseData.name;
+            document.getElementById('exerciseModalSubtitle').textContent = exerciseData.type;
+            document.getElementById('exerciseModalDescription').textContent = exerciseData.description;
+            
+            // Kas gruplarını göster
+            const musclesContainer = document.getElementById('exerciseModalMuscles');
+            musclesContainer.innerHTML = '';
+            const maxTags = 3;
+            const showMore = exerciseData.muscles.length > maxTags;
+            exerciseData.muscles.slice(0, maxTags).forEach(muscle => {
+                const muscleTag = document.createElement('span');
+                muscleTag.className = 'muscle-tag';
+                muscleTag.textContent = muscle;
+                musclesContainer.appendChild(muscleTag);
+            });
+            if (showMore) {
+                const more = document.createElement('span');
+                more.className = 'muscle-more';
+                more.textContent = `+${exerciseData.muscles.length - maxTags}`;
+                musclesContainer.appendChild(more);
+            }
+            // Türkçe + İngilizce karşılıkları
+            const tr = document.createElement('ul');
+            tr.className = 'muscle-translations';
+            const map = {
+                'Quadriceps': 'Quadriceps (Ön uyluk)',
+                'Hamstrings': 'Hamstrings (Arka uyluk)',
+                'Glutes': 'Gluteus (Kalça)',
+                'Pectoralis Major': 'Pectoralis Major (Göğüs)',
+                'Upper Pectoralis': 'Üst göğüs (Upper Pectoralis)',
+                'Triceps': 'Triceps (Arka kol)',
+                'Biceps Brachii': 'Biseps (Ön kol)',
+                'Brachialis': 'Brachialis (Ön kol kası)',
+                'Forearms': 'Önkol',
+                'Deltoids': 'Deltoid (Omuz)',
+                'Anterior Deltoid': 'Ön deltoid (Ön omuz)',
+                'Lateral Deltoid': 'Yan deltoid (Yan omuz)',
+                'Trapezius': 'Trapez',
+                'Latissimus Dorsi': 'Latissimus Dorsi (Kanat)',
+                'Rhomboids': 'Rhomboid (Sırt ortası)',
+                'Erector Spinae': 'Erector Spinae (Bel ekstansörleri)',
+                'Hip Flexors': 'Kalça bükücüler',
+                'Rectus Abdominis': 'Rectus Abdominis (Karın)',
+                'Obliques': 'Oblik (Yan karın)'
+            };
+            const added = new Set();
+            exerciseData.muscles.slice(0, 4).forEach(m => {
+                const label = map[m] || m;
+                if (added.has(label)) return; added.add(label);
+                const li = document.createElement('li');
+                li.textContent = label;
+                tr.appendChild(li);
+            });
+            musclesContainer.appendChild(tr);
+            
+            // Adımları göster
+            const stepsContainer = document.getElementById('exerciseModalSteps');
+            stepsContainer.innerHTML = '';
+            exerciseData.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.textContent = step;
+                stepsContainer.appendChild(li);
+            });
+            
+            // İpuçlarını göster
+            const tipsContainer = document.getElementById('exerciseModalTips');
+            tipsContainer.innerHTML = '';
+            exerciseData.tips.forEach(tip => {
+                const li = document.createElement('li');
+                li.textContent = tip;
+                tipsContainer.appendChild(li);
+            });
+            
+            document.getElementById('exerciseModal').classList.add('active');
+        }
+
+        // Egzersiz detay modal'ını kapat
+        function closeExerciseModal() {
+            document.getElementById('exerciseModal').classList.remove('active');
+        }
+
+        // Long press detection
+        let pressTimer;
+        let isLongPress = false;
+
+        // Long press event'ini güncelle
+        function updateLongPressEvent(li, exerciseData) {
+            // Long press için touch events
+            let startTime;
+            
+            li.addEventListener('touchstart', (e) => {
+                startTime = Date.now();
+                pressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    showExerciseModal(exerciseData);
+                }, 500); // 500ms = 0.5 saniye
+            });
+            
+            li.addEventListener('touchend', (e) => {
+                clearTimeout(pressTimer);
+                if (isLongPress) {
+                    isLongPress = false;
+                    e.preventDefault();
+                }
+            });
+            
+            li.addEventListener('touchmove', () => {
+                clearTimeout(pressTimer);
+            });
+
+            // Mouse events için
+            li.addEventListener('mousedown', () => {
+                startTime = Date.now();
+                pressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    showExerciseModal(exerciseData);
+                }, 500);
+            });
+            
+            li.addEventListener('mouseup', () => {
+                clearTimeout(pressTimer);
+                isLongPress = false;
+            });
+            
+            li.addEventListener('mouseleave', () => {
+                clearTimeout(pressTimer);
+                isLongPress = false;
+            });
+        }
+
+                // Program gösterme fonksiyonunu güncelle
+        function showProgram(dayIndex) {
+            const programKey = getProgramForDay(dayIndex);
+            const brand = 'NAZZ';
+            programTitle.innerText = `${brand} – ${dayNames[dayIndex]}`;
+            programList.innerHTML = "";
+            
+            const todayData = programs[programKey];
+            const warm = document.createElement('li');
+            warm.className = 'warmup';
+            warm.textContent = 'Isınma: 5 dk yürüyüş + mobilite';
+            programList.appendChild(warm);
+            todayData.forEach((item, index) => {
+                const setCount = parseSetCount(item.name);
+                const li = document.createElement("li");
+                li.className = "exercise-item";
+                li.dataset.order = String(index);
+                
+                // Set checkbox'larını oluştur
+                let setCheckboxes = '';
+                for (let i = 1; i <= setCount; i++) {
+                    setCheckboxes += `
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <input type="checkbox" class="set-checkbox" id="set${index}_${i}" data-set="${i}">
+                            <div class="set-label">${i}</div>
+                        </div>
+                    `;
+                }
+                // PR ve unit hesapları kaldırıldı
+                li.innerHTML = `
+                    <div class="exercise-content">
+                        <div class="exercise-details">
+                            <div class="exercise-name">${item.name}</div>
+                            <div class="exercise-rest">${item.rest}</div>
+                            
+                            <div class="exercise-sets">
+                                ${setCheckboxes}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                programList.appendChild(li);
+                
+                // Set checkbox'larını kontrol et ve event listener'ları ekle
+                for (let i = 1; i <= setCount; i++) {
+                    const setChk = document.getElementById(`set${index}_${i}`);
+                    const saved = localStorage.getItem(`${currentUser}_${dayIndex}_${programKey}_${index}_set${i}`);
+                    
+                    if (saved === "true") {
+                        setChk.checked = true;
+                    }
+                    
+                    // Set checkbox event listener
+                    setChk.addEventListener("change", () => {
+                        if (setChk.checked) {
+                            localStorage.setItem(`${currentUser}_${dayIndex}_${programKey}_${index}_set${i}`, "true");
+                            if (useCloud && window.cloudSync && window.cloudSync.enabled) {
+                                const key = `${dayIndex}_${programKey}_${index}_set${i}`;
+                                window.cloudSync.setSet(currentUser, key, true);
+                            }
+                            // Dinlenme süresi varsa timer başlat
+                            const shortRest = parseRestTime(item.rest);
+                            let secondsToUse = shortRest;
+                            // Son set tamamlandı mı?
+                            let allDone = true;
+                            for (let s = 1; s <= setCount; s++) {
+                                const chkEl = document.getElementById(`set${index}_${s}`);
+                                if (!chkEl || !chkEl.checked) { allDone = false; break; }
+                            }
+                            if (allDone) {
+                                secondsToUse = getLongRestSeconds(shortRest);
+                            }
+                            if (secondsToUse > 0) {
+                                showTimerModal(secondsToUse);
+                            }
+                        } else {
+                            localStorage.setItem(`${currentUser}_${dayIndex}_${programKey}_${index}_set${i}`, "false");
+                            if (useCloud && window.cloudSync && window.cloudSync.enabled) {
+                                const key = `${dayIndex}_${programKey}_${index}_set${i}`;
+                                window.cloudSync.setSet(currentUser, key, false);
+                            }
+                        }
+                        updateProgress(dayIndex, programKey);
+                        updateExerciseProgress(li);
+                        resortProgramList();
+                    });
+                }
+                
+                // Long press event listener'ı ekle
+                updateLongPressEvent(li, item);
+            });
+            
+            updateProgress(dayIndex, programKey);
+            resortProgramList();
+        }
+
+
+
+// Service worker register (PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+}
+
+// Başlangıç
+        setupUserSelector();
+        loadUserData();
+        updateUserTheme();
+        // Start immediately if cloud already available
+        if (window.cloudSync && window.cloudSync.enabled) {
+            startCloudSyncAll();
+        }
+        daySelect.value = activeDays[0];
+showProgram(parseInt(daySelect.value));
+        daySelect.addEventListener("change", () => {
+            showProgram(parseInt(daySelect.value));
+        });
+
+        // Program / Rehber toggle
+        const btnProgram = document.getElementById('btnProgram');
+        const btnGuide = document.getElementById('btnGuide');
+        const guideSection = document.getElementById('guideSection');
+        if (btnProgram && btnGuide && guideSection) {
+            btnProgram.addEventListener('click', () => {
+                btnProgram.classList.add('active');
+                btnGuide.classList.remove('active');
+                document.querySelector('.program-section').style.display = 'block';
+                guideSection.style.display = 'none';
+            });
+            btnGuide.addEventListener('click', () => {
+                btnGuide.classList.add('active');
+                btnProgram.classList.remove('active');
+                document.querySelector('.program-section').style.display = 'none';
+                guideSection.style.display = 'block';
+            });
+            // Guide search
+            const guideSearch = document.getElementById('guideSearch');
+            if (guideSearch) {
+                guideSearch.addEventListener('input', () => {
+                    const q = guideSearch.value.toLowerCase();
+                    const sections = document.querySelectorAll('#guideArticle section');
+                    sections.forEach(sec => {
+                        const text = sec.innerText.toLowerCase();
+                        sec.style.display = text.includes(q) ? 'block' : 'none';
+                    });
+                });
+            }
+        }
+
+        // Alt kısımda 5 sn bekleyince sıfırlama butonunu göster
+        let bottomHoldTimer = null;
+        let bottomHoldActive = false;
+        let bottomAutoHideTimer = null;
+        function isAtBottom() {
+            const threshold = 6;
+            return window.innerHeight + window.scrollY >= (document.body.offsetHeight - threshold);
+        }
+        function startBottomHold() {
+            if (bottomHoldActive || bottomHoldTimer) return;
+            bottomHoldTimer = setTimeout(() => {
+                bottomHoldActive = true;
+                const btn = document.getElementById('bottomResetBtn');
+                if (btn) btn.style.display = 'block';
+                // Otomatik gizleme (7 sn sonra)
+                if (bottomAutoHideTimer) clearTimeout(bottomAutoHideTimer);
+                bottomAutoHideTimer = setTimeout(() => {
+                    hideBottomReset();
+                }, 7000);
+            }, 5000);
+        }
+        function cancelBottomHold() {
+            if (bottomHoldTimer) {
+                clearTimeout(bottomHoldTimer);
+                bottomHoldTimer = null;
+            }
+        }
+        function hideBottomReset() {
+            const btn = document.getElementById('bottomResetBtn');
+            if (btn) btn.style.display = 'none';
+            bottomHoldActive = false;
+            if (bottomAutoHideTimer) {
+                clearTimeout(bottomAutoHideTimer);
+                bottomAutoHideTimer = null;
+            }
+        }
+        window.addEventListener('scroll', () => {
+            if (!isAtBottom()) {
+                // Alt bölgeden uzaklaşınca hemen gizle
+                hideBottomReset();
+                cancelBottomHold();
+                return;
+            }
+            if (!bottomHoldActive) startBottomHold();
+        });
+
+        function updateExerciseProgress(li) {
+            if (!li || !li.classList.contains('exercise-item')) return;
+            const setBoxes = li.querySelectorAll('.set-checkbox');
+            const total = setBoxes.length;
+            let checked = 0;
+            setBoxes.forEach(b => { if (b && b.checked) checked++; });
+            li.dataset.total = String(total);
+            li.dataset.progress = String(checked);
+        }
+        function resortProgramList() {
+            const list = document.getElementById('programList');
+            if (!list) return;
+            const warm = list.querySelector('.warmup');
+            const items = Array.from(list.querySelectorAll('li.exercise-item'));
+            items.forEach(updateExerciseProgress);
+            items.sort((a, b) => {
+                const pa = Number(b.dataset.progress || '0') - Number(a.dataset.progress || '0');
+                if (pa !== 0) return pa; // daha çok tamamlanan üste
+                const oa = Number(a.dataset.order || '0');
+                const ob = Number(b.dataset.order || '0');
+                return oa - ob; // eşitlikte ilk sıra korunur
+            });
+            // yeniden yerleştir
+            if (warm) list.appendChild(warm);
+            items.forEach(it => list.appendChild(it));
+        }
+</script>
+
+    
+</body>
+</html>
