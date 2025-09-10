@@ -1,72 +1,68 @@
-# 💪 Batman Full Body — PWA Antrenman Takipçisi
+# 🌊 NAZZ — 3 Günlük Antrenman Takipçisi (PWA)
 
-Minimal ve mobil-öncelikli tam vücut antrenman takipçisi. Pzt/Çrş/Cuma program akışı, egzersiz başına PR girme, egzersiz bazlı Rank (Rookie → Dark Knight), TR rehber ve offline çalışma.
+Mobil-öncelikli, sade ve okunaklı arayüz. Tek kullanıcı, mavi vurgu, set takibi ve modern dinlenme sayacı.
 
 [![PWA](https://img.shields.io/badge/PWA-Installable-5a29e4?style=for-the-badge)](#) [![Mobile First](https://img.shields.io/badge/Mobile-First-0ea5e9?style=for-the-badge)](#)
 
-## 🚀 Öne Çıkanlar
+## 🚀 Özellikler
 
-- 🗓️ Sabit program: Pazartesi (Kuvvet), Çarşamba (Posterior Chain + Core), Cuma (Volüm & Detay)
-- ✅ Set bazlı takip: Her egzersiz için set checkbox’ları ve ilerleme barı
-- ⏱️ Akıllı dinlenme: Son setten sonra otomatik daha uzun dinlenme, titreşim uyarısı
-- 🏷️ PR ve Rank: Her egzersizde PR girişi; rozet ile seviye (Rookie → Dark Knight) + “bir sonraki seviyeye x kg”
-- 👁️ Açılışta rank görünümü: Sayfa açılır açılmaz egzersiz rozetleri hesaplanır (PR girmeden Rookie görünür)
-- 📚 Rehber (TR): Arama, mobil okunaklı paragraf akışı, ana ve aksesuar hareketler için rank-chip grid’leri
-- 📦 Offline/PWA: Service worker cache; ana ekrana ekle
-- ☁️ İsteğe bağlı bulut senkron: Firestore (anonim oturum)
+- 🗓️ 3 gün seçimi: 1=Pazartesi, 2=Çarşamba, 3=Cuma
+- ✅ Set bazlı takip ve ilerleme barı
+- ⏱️ Modern dinlenme penceresi: degrade bar, blur, düzenli tipografi, İptal/Devam butonları
+- 📚 Rehber (TR): Program amacı ve temel notlar
+- 📦 Offline/PWA: Ana ekrana ekle, çevrimdışı çalışma
+- ☁️ İsteğe bağlı bulut senkron (Firestore) — profil/preset ve setler (PR/Rank yok)
 
-## 📅 Haftalık Program (Özet)
+## 📅 Program (Özet)
 
-- Pazartesi — Back Squat, Bench Press, Row, DB OHP, Face Pull, Plank, Wrist Curl
-- Çarşamba — Deadlift, Lat Pulldown, Incline DB Press, Leg Curl, Hip Thrust, Side Plank, Reverse Wrist Curl
-- Cuma — Front/Goblet Squat, OHP, Romanian Deadlift, Seated Row, Lateral Raise, Hanging Knee Raise, Wrist Roller
-
-## 🏷️ Rank (Seviye) Sistemi — Ana Hareketler
-
-- Bench: 40×5 → 60×5 → 80×5 → 100×5 → 120×5 → 140×5
-- Squat: 60×5 → 80×5 → 100×5 → 140×5 → 160×5 → 180×5
-- Deadlift: 80×5 → 100×5 → 140×5 → 180×5 → 200×5 → 220×5
-- OHP: 25×5 → 35×5 → 45×5 → 55×5 → 65×5 → 75×5
-- Row: 40×5 → 60×5 → 80×5 → 100×5 → 120×5 → 140×5
-- Lat Pulldown: 40×8 → 60×8 → 80×8 → 100×8 → 120×8 → 140×8
-
-> Aksesuarlar için de eşikler eklenmiştir (incline DB, front/goblet, RDL, leg curl, hip thrust, DB OHP, lateral raise, face pull, seated row, core/grip) ve rehberde chip olarak listelenir.
-
-## 📚 Rehber (TR)
-
-- Arama: “bench, uyku, protein” gibi anahtarlarla içerik filtreleme
-- İçerik başlıkları: Programın Amacı, Haftalık Program, Rank Özetleri, Aksesuar Eşikleri (chip grid), Uygulama Adımları, 12 Haftalık Periyodizasyon, SSS & Güvenlik
+- 1. Gün – Kalça & Bacak
+  - Squat (barbell/smith) — 4×12
+  - Hip Thrust (barbell/dumbbell) — 4×12
+  - Walking Lunge (dambıl) — 3×12 (her bacak)
+  - Romanian Deadlift (DB/BB) — 3×12
+  - Leg Press — 3×12
+  - Glute Kickback (kablo/lastik) — 3×15
+- 2. Gün – Üst Vücut + Core (Hafif)
+  - Lat Pulldown (geniş tutuş) — 3×12
+  - Shoulder Press (hafif) — 3×12
+  - Dumbbell Row — 3×12 (her kol)
+  - Biceps Curl (hafif) — 2×15
+  - Triceps Pushdown (hafif) — 2×12
+  - Plank — 3×30–40 sn
+  - Russian Twist (hafif DB) — 3×15
+- 3. Gün – Kalça & Bacak (Daha Yoğun)
+  - Bulgarian Split Squat (DB) — 3×12 (her bacak)
+  - Hip Thrust (ağır) — 4×10
+  - Sumo Deadlift (DB/BB) — 3×12
+  - Side Lunge — 3×12 (her bacak)
+  - Leg Curl (makine) — 3×12
+  - Fire Hydrant (lastik) — 3×15
 
 ## 📱 Kullanım
 
-1) Üstten “Program / Rehber” arasında geçiş yapın
-
-2) Gün seçin (Pazartesi/Çarşamba/Cuma) ve egzersiz setlerini işaretleyin (başlık sadece gün adını gösterir)
-
-3) PR değerinizi egzersiz kartındaki alanlara girin; rank rozetleri ve “sonraki seviyeye x kg” otomatik güncellenir (PR olmadan Rookie görünür)
-
-4) Dinlenme süresi bitince titreşim uyarısı gelir; isterseniz iptal edin
-
-5) Offline/PWA: Ana ekrana ekleyin ve internet olmadan da kullanın
+1) Üstteki menüden “Program / Rehber” arasında geçiş yapın
+2) Gün seçip egzersiz setlerini işaretleyin; ilerleme barı otomatik güncellenir
+3) Dinlenme penceresi ile süreyi takip edin; isterseniz “İptal” ile kapatın
+4) PWA olarak ana ekrana ekleyip çevrimdışı kullanın
 
 ## 🛠️ Teknik
 
-- Vanilla JS + HTML + CSS (framework yok)
+- Vanilla JS + HTML + CSS
 - LocalStorage (offline veri), Firestore (opsiyonel bulut)
-- PWA: `manifest.webmanifest`, `sw.js` (network-first HTML, cache-first varlıklar)
+- PWA: `manifest.webmanifest`, `sw.js`
 
 ## 🔧 Geliştirme
 
 ```bash
 git clone <repo>
 cd <repo>
-# Geliştirme için herhangi bir statik sunucu ile açın (ör. VS Code Live Server)
+# Herhangi bir statik sunucu ile açın (örn. VS Code Live Server)
 ```
 
 ## 📁 Yapı
 
 ```
-fullbody-takip-main/
+fullbody-takip/
 ├── index.html
 ├── README.md
 ├── sw.js
